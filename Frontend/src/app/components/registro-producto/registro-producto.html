@@ -4,7 +4,11 @@
   <form [formGroup]="productoForm" novalidate>
 
     <div class="campo">
-      <label for="nombre">Nombre</label>
+      <label for="nombre">
+        Nombre
+        <span *ngIf="f['nombre'].valid && f['nombre'].touched" class="icono-ok">✓</span>
+        <span *ngIf="f['nombre'].invalid && f['nombre'].touched" class="icono-error">✗</span>
+      </label>
       <input
         id="nombre"
         type="text"
@@ -21,7 +25,11 @@
     </div>
 
     <div class="campo">
-      <label for="descripcion">Descripción</label>
+      <label for="descripcion">
+        Descripción
+        <span *ngIf="f['descripcion'].valid && f['descripcion'].touched" class="icono-ok">✓</span>
+        <span *ngIf="f['descripcion'].invalid && f['descripcion'].touched" class="icono-error">✗</span>
+      </label>
       <textarea
         id="descripcion"
         formControlName="descripcion"
@@ -37,7 +45,11 @@
     </div>
 
     <div class="campo">
-      <label for="precio">Precio</label>
+      <label for="precio">
+        Precio
+        <span *ngIf="f['precio'].valid && f['precio'].touched" class="icono-ok">✓</span>
+        <span *ngIf="f['precio'].invalid && f['precio'].touched" class="icono-error">✗</span>
+      </label>
       <input
         id="precio"
         type="number"
@@ -52,7 +64,11 @@
     </div>
 
     <div class="campo">
-      <label for="categoria">Categoría</label>
+      <label for="categoria">
+        Categoría
+        <span *ngIf="f['categoria'].valid && f['categoria'].touched" class="icono-ok">✓</span>
+        <span *ngIf="f['categoria'].invalid && f['categoria'].touched" class="icono-error">✗</span>
+      </label>
       <select
         id="categoria"
         formControlName="categoria"
@@ -68,7 +84,11 @@
     </div>
 
     <div class="campo">
-      <label for="stock">Stock</label>
+      <label for="stock">
+        Stock
+        <span *ngIf="f['stock'].valid && f['stock'].touched" class="icono-ok">✓</span>
+        <span *ngIf="f['stock'].invalid && f['stock'].touched" class="icono-error">✗</span>
+      </label>
       <input
         id="stock"
         type="number"
@@ -83,12 +103,16 @@
     </div>
 
     <div class="campo">
-      <label for="sku">SKU (opcional, formato ABC-1234)</label>
+      <label for="sku">
+        SKU (opcional, formato ABC-1234)
+        <span *ngIf="f['sku'].valid && f['sku'].touched && f['sku'].value" class="icono-ok">✓</span>
+        <span *ngIf="f['sku'].invalid && f['sku'].touched" class="icono-error">✗</span>
+      </label>
       <input
         id="sku"
         type="text"
         formControlName="sku"
-        [class.valido]="f['sku'].valid && f['sku'].touched"
+        [class.valido]="f['sku'].valid && f['sku'].touched && f['sku'].value"
         [class.invalido]="f['sku'].invalid && f['sku'].touched"
       />
       <ul class="errores" *ngIf="f['sku'].invalid && (f['sku'].touched || f['sku'].dirty)">
@@ -103,6 +127,10 @@
       <ul>
         <li *ngFor="let campo of camposConError()">{{ campo }} tiene un error.</li>
       </ul>
+    </div>
+
+    <div class="resumen-exito" *ngIf="productoForm.valid">
+      <p>Todos los campos son válidos. Puede registrar el producto.</p>
     </div>
 
     <button type="submit" [disabled]="productoForm.invalid">Registrar Producto</button>
