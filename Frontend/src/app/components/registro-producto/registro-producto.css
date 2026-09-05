@@ -60,3 +60,23 @@ button:disabled {
   color: #c0392b;
   font-size: 0.85rem;
 }
+
+.icono-ok {
+  color: #2ecc71;
+  margin-left: 0.4rem;
+}
+
+.icono-error {
+  color: #e74c3c;
+  margin-left: 0.4rem;
+}
+
+.resumen-exito {
+  background-color: #eafaf1;
+  border: 1px solid #2ecc71;
+  border-radius: 4px;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  color: #27ae60;
+  font-size: 0.9rem;
+}
