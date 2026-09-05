@@ -1,0 +1,45 @@
+.contenedor-formulario {
+  max-width: 500px;
+  margin: 2rem auto;
+  font-family: Arial, sans-serif;
+}
+
+.campo {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+input, select, textarea {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.valido {
+  border-color: #2ecc71;
+  background-color: #eafaf1;
+}
+
+.invalido {
+  border-color: #e74c3c;
+  background-color: #fdecea;
+}
+
+button {
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.debug {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: #f4f4f4;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
