@@ -1,1 +1,81 @@
-<p>registro-producto works!</p>
+<div class="contenedor-formulario">
+  <h2>Registro de Producto</h2>
+
+  <form [formGroup]="productoForm" novalidate>
+
+    <div class="campo">
+      <label for="nombre">Nombre</label>
+      <input
+        id="nombre"
+        type="text"
+        formControlName="nombre"
+        [class.valido]="f['nombre'].valid && f['nombre'].touched"
+        [class.invalido]="f['nombre'].invalid && f['nombre'].touched"
+      />
+    </div>
+
+    <div class="campo">
+      <label for="descripcion">Descripción</label>
+      <textarea
+        id="descripcion"
+        formControlName="descripcion"
+        [class.valido]="f['descripcion'].valid && f['descripcion'].touched"
+        [class.invalido]="f['descripcion'].invalid && f['descripcion'].touched"
+      ></textarea>
+    </div>
+
+    <div class="campo">
+      <label for="precio">Precio</label>
+      <input
+        id="precio"
+        type="number"
+        formControlName="precio"
+        [class.valido]="f['precio'].valid && f['precio'].touched"
+        [class.invalido]="f['precio'].invalid && f['precio'].touched"
+      />
+    </div>
+
+    <div class="campo">
+      <label for="categoria">Categoría</label>
+      <select
+        id="categoria"
+        formControlName="categoria"
+        [class.valido]="f['categoria'].valid && f['categoria'].touched"
+        [class.invalido]="f['categoria'].invalid && f['categoria'].touched"
+      >
+        <option value="" disabled selected>Seleccione una categoría</option>
+        <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+      </select>
+    </div>
+
+    <div class="campo">
+      <label for="stock">Stock</label>
+      <input
+        id="stock"
+        type="number"
+        formControlName="stock"
+        [class.valido]="f['stock'].valid && f['stock'].touched"
+        [class.invalido]="f['stock'].invalid && f['stock'].touched"
+      />
+    </div>
+
+    <div class="campo">
+      <label for="sku">SKU (opcional, formato ABC-1234)</label>
+      <input
+        id="sku"
+        type="text"
+        formControlName="sku"
+        [class.valido]="f['sku'].valid && f['sku'].touched"
+        [class.invalido]="f['sku'].invalid && f['sku'].touched"
+      />
+    </div>
+
+    <button type="submit" [disabled]="productoForm.invalid">Registrar Producto</button>
+
+  </form>
+
+  <div class="debug">
+    <p><strong>Estado del formulario:</strong> {{ productoForm.status }}</p>
+    <p><strong>Valores actuales:</strong> {{ productoForm.value | json }}</p>
+  </div>
+</div>
