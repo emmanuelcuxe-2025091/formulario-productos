@@ -36,4 +36,22 @@ export class RegistroProducto implements OnInit {
   get f() {
     return this.productoForm.controls;
   }
+
+  camposConError(): string[] {
+    return Object.keys(this.productoForm.controls)
+      .filter(campo => this.productoForm.get(campo)?.invalid)
+      .map(campo => this.etiquetaCampo(campo));
+  }
+
+  private etiquetaCampo(campo: string): string {
+    const etiquetas: { [key: string]: string } = {
+      nombre: 'Nombre',
+      descripcion: 'Descripción',
+      precio: 'Precio',
+      categoria: 'Categoría',
+      stock: 'Stock',
+      sku: 'SKU'
+    };
+    return etiquetas[campo] ?? campo;
+  }
 }
